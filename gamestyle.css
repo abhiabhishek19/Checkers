@@ -19,3 +19,8 @@ body{
     background-size: cover;
     
 }
+
+
+.white{
+    fill: rgb(244, 239, 239);
+}
