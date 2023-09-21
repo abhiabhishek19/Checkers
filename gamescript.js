@@ -1,7 +1,7 @@
 
 window.onload =function () {
     setGame();
-    setInterval(Moving,3000);
+    
 }
 
 
@@ -81,40 +81,68 @@ function setGame(){
 
 
     
+    
+    let o;
+    let t;
+    let allimg = document.getElementsByClassName("pie");
+    for(var i=0; i<allimg.length;i++)
+    {
+        allimg[i].addEventListener("click",function(){
+            o= this.parentElement.id;
+            t = parseInt(o,10)+8;
+            
+        
+            document.getElementById(t.toString()).innerHTML='<img src="./circle.png" height="60px">';
+            
+            document.getElementById(t.toString()).addEventListener("click",function(){
 
+                document.getElementById(t.toString()).innerHTML=document.getElementById(o).innerHTML;
+                document.getElementById(o.toString()).innerHTML='<div></div>';
+                
+                o=null;
+                t=null;
+            },{once : true});
+           
+               
+            });
+    }
     
     
+    // setInterval(Moving,3000);
 
 }
 function Moving(){
-    var allimg = document.getElementsByClassName("pie");
+    
+    let allimg = document.getElementsByClassName("pie");
     for(var i=0; i<allimg.length;i++)
     {
-        if(allimg[i].classList.contains("paidal"))
+        if(allimg[i].classList.contains("black"))
         {
             allimg[i].parentElement.addEventListener("click",function(){
-                var o = this.id;
-                var t = parseInt(this.id,10)+8;
-                console.log(o.toString());
-                console.log(t.toString());
+                const o = this.id;
+                const t = parseInt(this.id,10)+8;
+                console.log(document.getElementById(o.toString()));
+                console.log(document.getElementById(t.toString()));
+            
                 document.getElementById(t.toString()).innerHTML='<img src="./circle.png" height="60px">';
                 document.getElementById(t.toString()).addEventListener("click",function(){
-                    // this.innerHTML=document.getElementById(o.toString()).innerHTML;
+                    
                     document.getElementById(t.toString()).innerHTML=document.getElementById(o.toString()).innerHTML;
                     document.getElementById(o.toString()).innerHTML='<div></div>';
-                    
+                    console.log(document.getElementById(o.toString()));
+                    console.log(document.getElementById(t.toString()));
                 });
-                // this.parentElement.innerHTML='<div></div>';
-                console.log(o.toString());
-                console.log(t.toString());
-            });
+                
+                
+            },false);
         }
            
         
         
         // allimg[i].parentElement.addEventListener("click",marking);
 
-    }}
+    }
+}
 
 
     function marking(){
@@ -156,3 +184,4 @@ function Moving(){
         }
         
     }
+
